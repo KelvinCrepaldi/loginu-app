@@ -3,11 +3,10 @@ import Dashboard from "../pages/Dashboard";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 
 const RoutesPaths =()=>{
     return(
-        <>
         <Layout>
             <Routes>
                 <Route exact path="/" element={<Home />} />
@@ -16,7 +15,6 @@ const RoutesPaths =()=>{
                 <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
         </Layout>
-        </>
         
     );
 };

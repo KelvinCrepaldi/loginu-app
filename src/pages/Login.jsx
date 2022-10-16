@@ -1,12 +1,17 @@
+import FormContainer from "../components/FormContainer.jsx";
 import { Link } from "react-router-dom";
 
 const Login = () =>{
     return (
         <section>
-            <input placeholder="Email"></input>
-            <input placeholder="Email"></input>
-            <button>Login</button>
-            <Link to="/signup">Já tem uma conta?</Link>
+            <FormContainer>
+                <form>
+                    <input placeholder="Email"></input>
+                    <input placeholder="password"></input>
+                    <button>Login</button>
+                </form>
+                <Link to="/signup">Já tem uma conta?</Link>
+            </FormContainer>
         </section>
     )
 }
