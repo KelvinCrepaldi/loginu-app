@@ -4,8 +4,11 @@ const Home = () =>{
     return (
         <HomeSection>
             
-            <Link to="/signup">Criar Conta</Link>
-            <Link to="/login">Logar</Link>
+            <div className="links-user">
+                <Link to="/signup">Criar Conta</Link>
+                <Link to="/login">Logar</Link>
+            </div>
+           
 
             <div className="home-text">
                 <h1>loginu-app</h1>

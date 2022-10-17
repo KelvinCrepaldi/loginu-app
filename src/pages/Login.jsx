@@ -10,7 +10,7 @@ const Login = () =>{
                     <input placeholder="password"></input>
                     <button>Login</button>
                 </form>
-                <Link to="/signup">Já tem uma conta?</Link>
+                <Link to="/signup">Criar uma conta!</Link>
             </FormContainer>
         </section>
     )
