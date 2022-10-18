@@ -2,11 +2,14 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import * as yup from "yup";
 import { Link } from "react-router-dom";
+import api from "../services/index.jsx";
+import { useNavigate } from "react-router-dom"
 
 import FormContainer from "../components/FormContainer.jsx";
-import axios from "axios";
 
 const Login = () =>{
+
+    const navigate = useNavigate();
 
     const formSchema = yup.object().shape({
         email: yup.string().required("Por favor escreva seu e-mail.").email("Formato de e-mail inválido."),
@@ -19,10 +22,13 @@ const Login = () =>{
 
         const {email, password } = e;
 
-        axios.post("https://loginu-api.vercel.app/user/login", {email, password}).then((res)=>{
-            console.log(res)
+        api.post(`user/login`,{email, password}).then((res)=>{
+            console.log(res.data.token)
+            localStorage.setItem("loginuKey", res.data.token)
+            navigate("/dashboard")
+            
         }).catch((error)=>{
-
+            console.log(error)
 
         });
 

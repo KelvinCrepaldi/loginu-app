@@ -2,6 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form"
 import * as yup from "yup";
 import { Link } from "react-router-dom";
+import api from "../services/index.jsx";
 
 import FormContainer from "../components/FormContainer.jsx";
 
@@ -22,7 +23,15 @@ const Signup = () =>{
       } = useForm({ resolver: yupResolver(formSchema) });
 
     const onSubmitFunction = (e) =>{
-        console.log(e)
+
+        const {name, email, password} = e;
+
+        api.post(`user/`,{name, email, password}).then((res)=>{
+            console.log(res)
+        }).catch((error)=>{
+            console.log(error)
+
+        });
 
     }
 
