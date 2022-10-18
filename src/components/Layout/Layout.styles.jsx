@@ -8,6 +8,19 @@ flex-direction: column;
 align-items: center;
 justify-content: space-between;
 
+header{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(0,0,0,0.3);
+}
+header h1{
+    font-size: 3rem;
+    margin: 0px 0px 30px;
+}
+
 h1{
     font-size: 3rem;
     margin: 20px;
@@ -20,6 +33,7 @@ h1, p{
 }
 
 .footer{
+    margin-top: 30px;
     padding: 10px 0;
     display: flex;
     flex-direction: column;

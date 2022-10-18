@@ -2,10 +2,10 @@ import { LayoutContainer } from "./Layout.styles";
 import { Link } from "react-router-dom";
 const Layout = ({children}) =>{
     return(<LayoutContainer>
-        <div>
+        <header >
             <h1>Loginu APP</h1>
-            <p>Um simples projeto de autenticação com jsonwebtoken e bcrypt...</p>
-        </div>
+            <p>Um simples projeto de autenticação com React.js e Express.js...</p>
+        </header>
         {children}
         <footer className="footer">
             <nav>

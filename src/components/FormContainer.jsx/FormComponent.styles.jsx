@@ -47,16 +47,19 @@ export const FormContainerDiv = styled.div`
         border-radius: 10px;
         color:#182e27;
         cursor: pointer;
+        box-shadow: 1px 1px 3px black, inset 1px 1px 3px rgb(255,255,255,0.6),  inset -1px -1px 3px rgb(0,0,0,0.9);
     }
 
     button:hover{
         background-color: #32ad88;
-        transform: scale(1.05);
+        width: 155px;
+        transform: translateY(-3px);
     }
     button:focus{
         outline: none;
         background-color: #32ad88;
-        transform: scale(1.05);
+        width: 155px;
+        transform: translateY(-3px);
     }
 
     a{
@@ -69,5 +72,9 @@ export const FormContainerDiv = styled.div`
     a:hover{
         transform: scale(1.2);
         color: #9de3ff;
+    }
+
+    .error-message{
+        color: #f37373;
     }
 `;

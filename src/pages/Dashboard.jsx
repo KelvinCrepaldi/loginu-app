@@ -1,7 +1,9 @@
+import DashboardContent from "../components/DashboardContent";
+
 const Dashboard = () =>{
     return (
         <section>
-            Dashboard
+            <DashboardContent/>
         </section>
     )
 }
