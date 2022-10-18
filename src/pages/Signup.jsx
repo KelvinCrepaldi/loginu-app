@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form"
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 import api from "../services/index.jsx";
+import { useNavigate } from "react-router-dom";
 
 import FormContainer from "../components/FormContainer.jsx";
 
 const Signup = () =>{
+    const navigate = useNavigate();
 
     const formSchema = yup.object().shape({
         name: yup.string().required("Por favor escreva seu nome.").min(2, "Nome precisa ter no minimo 2 caracteres."),
@@ -28,6 +30,7 @@ const Signup = () =>{
 
         api.post(`user/`,{name, email, password}).then((res)=>{
             console.log(res)
+            navigate("/dashboard")
         }).catch((error)=>{
             console.log(error)
 
