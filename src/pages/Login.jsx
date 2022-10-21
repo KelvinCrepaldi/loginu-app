@@ -4,12 +4,24 @@ import * as yup from "yup";
 import { Link } from "react-router-dom";
 import api from "../services/index.jsx";
 import { useNavigate } from "react-router-dom"
+import { UserContext } from "../providers/user/index.jsx";
+import { useContext, useEffect } from "react";
 
 import FormContainer from "../components/FormContainer.jsx";
 
 const Login = () =>{
 
     const navigate = useNavigate();
+
+    const {requestLogin,isLogged} = useContext(UserContext);
+
+
+    useEffect(()=>{
+        if(isLogged){
+            navigate("/dashboard")
+        }
+    },[])
+
 
     const formSchema = yup.object().shape({
         email: yup.string().required("Por favor escreva seu e-mail.").email("Formato de e-mail inválido."),
@@ -18,26 +30,16 @@ const Login = () =>{
 
     const {register, handleSubmit, formState: {errors}, resetField } = useForm({resolver: yupResolver(formSchema)})
 
-    const onSubmitFunction = (e) =>{
-
-        const {email, password } = e;
-
-        api.post(`user/login`,{email, password}).then((res)=>{
-            console.log(res.data.token)
-            localStorage.setItem("loginuKey", res.data.token)
-            navigate("/dashboard")
-            
-        }).catch((error)=>{
-            console.log(error)
-
-        });
-
+   
+    const handleLogin = (e) =>{
+        requestLogin(e);
+        navigate('/dashboard')
     }
 
     return (
         <section>
             <FormContainer>
-                <form onSubmit={handleSubmit(onSubmitFunction)}>
+                <form onSubmit={handleSubmit(handleLogin)}>
                 <input placeholder="Email" {...register("email")}></input>
                     {errors.email?.message && (
                     <span className="error-message">{errors.email?.message}</span>

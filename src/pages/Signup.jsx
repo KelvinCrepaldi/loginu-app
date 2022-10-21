@@ -6,9 +6,20 @@ import api from "../services/index.jsx";
 import { useNavigate } from "react-router-dom";
 
 import FormContainer from "../components/FormContainer.jsx";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../providers/user/index.jsx";
 
 const Signup = () =>{
+
+
     const navigate = useNavigate();
+    const {requestLogin,isLogged} = useContext(UserContext);
+
+    useEffect(()=>{
+        if(isLogged){
+            navigate("/dashboard")
+        }
+    },[])
 
     const formSchema = yup.object().shape({
         name: yup.string().required("Por favor escreva seu nome.").min(2, "Nome precisa ter no minimo 2 caracteres."),
